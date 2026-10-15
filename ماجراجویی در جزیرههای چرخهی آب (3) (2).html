@@ -1,0 +1,307 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>ماجراجویی در جزیره‌های چرخه‌ی آب</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;800;900&display=swap">
+<style>
+/* Layout: one centered column; a treasure map of five stacked islands, zig-zagged left/right like stepping stones on the sea. */
+:root{--sky:#7dd3fc;--sea:#0ea5e9;--sun:#ffd23f;--coral:#ff6b6b;--leaf:#2dc653;--ink:#2b2d42;--paper:#fffdf5;--grape:#7b5cff;--drop:#00b4d8;--white:#ffffff;--font:"Vazirmatn",Tahoma,"Segoe UI",sans-serif;color-scheme:light}
+*{box-sizing:border-box;margin:0}
+html,body{min-height:100%}
+body{font-family:var(--font);color:var(--ink);background:linear-gradient(#6ee7f9 0%,#bae6fd 30%,#e0f2fe 52%,#22d3ee 52.1%,#2563eb 100%);background-attachment:fixed;overflow-x:hidden;min-height:100vh;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+body:before{content:"☁️";position:fixed;top:6%;font-size:70px;opacity:.9;animation:cloud 40s linear infinite;right:-100px;pointer-events:none}
+body:after{content:"☁️";position:fixed;top:16%;font-size:44px;opacity:.8;animation:cloud 60s linear infinite;right:-100px;animation-delay:-25s;pointer-events:none}
+@keyframes cloud{to{right:110%}}
+#root{position:relative;z-index:1;max-width:640px;margin:0 auto;padding-block:14px 64px;min-height:100vh}
+.screen{display:none}.screen.on{display:block}
+.card{background:linear-gradient(#fffdf5,#eef9ff);border:4px solid var(--ink);border-radius:28px;padding:20px;box-shadow:0 8px 0 var(--ink);margin-top:14px;position:relative;overflow:hidden;color:var(--ink)}
+.card:before{content:"";position:absolute;top:0;left:0;right:0;height:10px;background:linear-gradient(90deg,#00b4d8,#7dd3fc,#ffd23f,#2dc653,#7b5cff)}
+h1{font-size:clamp(26px,7vw,38px);line-height:1.5;text-align:center;padding-top:8px;background:linear-gradient(90deg,#0077b6,#00b4d8,#2dc653,#7b5cff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(3px 3px 0 #fff)}
+h2{font-size:22px;text-align:center;margin-bottom:8px;color:var(--ink)}
+.hero{font-size:76px;text-align:center;animation:bob 2.2s ease-in-out infinite;filter:drop-shadow(0 6px 0 rgba(0,0,0,.15));padding-top:10px}
+@keyframes bob{50%{transform:translateY(-12px) rotate(-4deg)}}
+.credit{display:block;width:fit-content;max-width:100%;margin:10px auto;background:var(--sun);color:var(--ink);border:3px solid var(--ink);border-radius:999px;padding:6px 18px;font-weight:800}
+input{width:100%;font:inherit;font-size:20px;text-align:center;padding:12px;border:4px solid var(--ink);border-radius:18px;margin:12px 0;background:var(--white);color:var(--ink)}
+input:focus,button:focus-visible{outline:4px solid var(--grape);outline-offset:2px}
+.btn{font:inherit;font-weight:800;font-size:20px;color:var(--white);background:linear-gradient(135deg,#2dc653,#00b4d8);border:4px solid var(--ink);border-radius:20px;padding:12px 24px;cursor:pointer;box-shadow:0 6px 0 var(--ink);transition:transform .1s,box-shadow .1s;width:100%;text-shadow:0 2px 0 rgba(0,0,0,.25)}
+.btn:active{transform:translateY(5px);box-shadow:0 1px 0 var(--ink)}
+.btn.alt{background:linear-gradient(135deg,#7b5cff,#ff3d71)}
+.btn.warm{background:linear-gradient(135deg,#ff9f1c,#ff3d71)}
+.btn.sm{width:auto;font-size:16px;padding:8px 16px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.chip{background:#fff7d6;color:var(--ink);border:3px solid var(--ink);border-radius:999px;padding:6px 14px;font-weight:800}
+#mute{font-size:22px;cursor:pointer;border:3px solid var(--ink);background:var(--sun);border-radius:50%;width:46px;height:46px;color:var(--ink)}
+.map{display:grid;gap:14px;margin-top:10px}
+.isle{display:flex;align-items:center;gap:14px;background:var(--white);color:var(--ink);border:4px solid var(--ink);border-radius:24px;padding:12px 16px;cursor:pointer;font:inherit;text-align:right;box-shadow:0 6px 0 var(--ink);width:100%;min-width:0}
+.isle:nth-child(2n){margin-right:28px;width:calc(100% - 28px)}.isle:nth-child(2n+1){margin-left:28px;width:calc(100% - 28px)}
+.isle:nth-child(1){background:#dbeafe}.isle:nth-child(2){background:#e0f2fe}.isle:nth-child(3){background:#ede9fe}.isle:nth-child(4){background:#dcfce7}.isle:nth-child(5){background:#fef9c3}
+.isle[disabled]{filter:grayscale(1);opacity:.6;cursor:not-allowed}
+.isle:not([disabled]):hover{transform:scale(1.02)}
+.isle .em{font-size:42px}.isle b{display:block;font-size:19px}.isle small{font-size:14px}
+.isle .txt{min-width:0}
+.stars{margin-right:auto;font-size:20px;letter-spacing:2px;white-space:nowrap}
+.bar{height:16px;background:#e5e7eb;border:3px solid var(--ink);border-radius:99px;overflow:hidden;margin:10px 0}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--coral),var(--sun));transition:width .4s}
+.q{font-size:clamp(19px,5vw,25px);font-weight:800;line-height:1.9;text-align:center;margin:10px 0 16px}
+.q small{display:block;font-size:15px;opacity:.7}
+.opts{display:grid;gap:12px}
+.opt{font:inherit;font-size:18px;font-weight:700;color:var(--ink);border:4px solid var(--ink);border-radius:18px;padding:12px;cursor:pointer;box-shadow:0 5px 0 var(--ink);line-height:1.8;min-width:0}
+.opt:nth-child(1){background:#ffe3ec}.opt:nth-child(2){background:#dbeafe}.opt:nth-child(3){background:#fef9c3}.opt:nth-child(4){background:#dcfce7}
+.opts .opt:hover{filter:brightness(.95)}
+.opts .opt.ok{background:#2dc653;color:var(--white);animation:pop .4s}
+.opts .opt.no{background:#ff4d6d;color:var(--white);animation:shake .4s}
+@keyframes pop{50%{transform:scale(1.07)}}
+@keyframes shake{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+#fb{min-height:64px;margin-top:14px;text-align:center;font-weight:700;line-height:1.9}
+.big{font-size:70px;text-align:center}
+.foot{position:fixed;bottom:0;left:0;right:0;text-align:center;background:var(--ink);color:var(--white);font-size:14px;padding:6px max(16px,env(safe-area-inset-left,0px)) calc(6px + env(safe-area-inset-bottom,0px));z-index:5}
+.confetti{position:fixed;top:-20px;font-size:26px;z-index:9;animation:fall 2.4s linear forwards;pointer-events:none}
+@keyframes fall{to{transform:translateY(110vh) rotate(540deg)}}
+.pop{position:fixed;top:38%;right:50%;transform:translate(50%,-50%) scale(0);font-size:clamp(46px,14vw,90px);font-weight:900;z-index:20;pointer-events:none;color:var(--white);-webkit-text-stroke:3px #2b2d42;paint-order:stroke fill;text-shadow:0 6px 0 #ff3d71;animation:popup 1.1s ease-out forwards;white-space:nowrap}
+@keyframes popup{0%{transform:translate(50%,-50%) scale(0) rotate(-12deg)}25%{transform:translate(50%,-50%) scale(1.15) rotate(5deg)}70%{transform:translate(50%,-60%) scale(1)}100%{transform:translate(50%,-90%) scale(1);opacity:0}}
+.bit{position:fixed;top:-20px;z-index:9;pointer-events:none;animation:fall 2.6s linear forwards;border-radius:3px}
+.tbl{overflow-x:auto}
+.ct{width:100%;border-collapse:separate;border-spacing:0 6px;margin:12px 0;font-weight:700}
+.ct th{background:#7b5cff;color:var(--white);padding:8px;font-size:15px}
+.ct th:first-child{border-radius:0 12px 12px 0}.ct th:last-child{border-radius:12px 0 0 12px}
+.ct td{background:var(--white);color:var(--ink);padding:9px 8px;text-align:center;font-size:15px;border-top:2px solid #2b2d42;border-bottom:2px solid #2b2d42}
+.ct td:first-child{text-align:right;border-right:2px solid #2b2d42;border-radius:0 12px 12px 0}.ct td:last-child{border-left:2px solid #2b2d42;border-radius:12px 0 0 12px}
+.cinfo{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;font-weight:700}
+.grade{text-align:center;font-size:24px;font-weight:900;background:linear-gradient(135deg,#ffd23f,#ff9f1c);border:4px solid #2b2d42;border-radius:20px;padding:12px;margin-top:8px;color:var(--ink)}
+.stamp{display:inline-block;transform:rotate(-8deg);border:4px double #d6285a;color:#d6285a;border-radius:14px;padding:2px 14px;margin-top:6px;font-size:20px}
+.note{text-align:center;line-height:2;margin:6px 0}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+
+<div id="root" dir="rtl" lang="fa">
+
+<section id="s-start" class="screen on">
+  <div class="card">
+    <div class="hero">💧</div>
+    <h1>ماجراجویی در جزیره‌های چرخه‌ی آب</h1>
+    <span class="credit">✨ طراح: گروه ۷ ✨</span>
+    <p class="note">ای کاپیتان کوچولو! پنج جزیره‌ی جادویی منتظر توست. همراه قطره‌ی آبی به دریا، ابر، باران و رودخانه سفر کن و گنج‌های چرخه‌ی آب را پیدا کن! 🌊☁️🌧️</p>
+    <input id="name" maxlength="20" placeholder="اسم تو چیه؟" autocomplete="off" aria-label="اسم کاپیتان">
+    <button class="btn" id="go">شروع ماجراجویی! 🚀</button>
+  </div>
+</section>
+
+<section id="s-map" class="screen">
+  <div class="top">
+    <div class="chip" id="hello"></div>
+    <div class="chip" id="total">⭐ ۰</div>
+    <button id="mute" title="قطع و وصل آهنگ" aria-label="قطع و وصل آهنگ">🔊</button>
+  </div>
+  <div class="card" style="margin-top:12px">
+    <h2>🗺️ نقشه‌ی گنج</h2>
+    <div class="map" id="map"></div>
+  </div>
+  <button class="btn warm" id="mapCard" style="margin-top:16px">📜 کارنامه‌ی من</button>
+</section>
+
+<section id="s-quiz" class="screen">
+  <div class="top">
+    <button class="btn sm alt" id="back">🏠 نقشه</button>
+    <div class="chip" id="qtitle"></div>
+    <button class="chip" id="mute2" style="cursor:pointer;font:inherit" aria-label="قطع و وصل آهنگ">🔊</button>
+  </div>
+  <div class="card">
+    <div class="bar"><i id="bar"></i></div>
+    <div class="q" id="qtext"></div>
+    <div class="opts" id="opts"></div>
+    <div id="fb"></div>
+    <button class="btn alt" id="next" style="display:none;margin-top:10px">بعدی ⬅️</button>
+  </div>
+</section>
+
+<section id="s-end" class="screen">
+  <div class="card">
+    <div class="big" id="eEmoji"></div>
+    <h2 id="eTitle"></h2>
+    <div class="stars big" id="eStars" style="font-size:54px"></div>
+    <p class="note" id="eText" style="margin:10px 0 16px"></p>
+    <button class="btn" id="again">دوباره امتحان کن 🔁</button>
+    <button class="btn alt" id="toMap" style="margin-top:14px">برگشت به نقشه 🗺️</button>
+    <button class="btn warm" id="toCard" style="margin-top:14px">📜 دیدن کارنامه</button>
+  </div>
+</section>
+
+<section id="s-card" class="screen">
+  <div class="card" id="cardBox">
+    <h1 style="font-size:clamp(24px,6vw,34px)">📜 کارنامه‌ی ماجراجویی</h1>
+    <div id="cardBody"></div>
+    <button class="btn" id="copy" style="margin-top:14px">📋 کپی کارنامه</button>
+    <button class="btn alt" id="cardBack" style="margin-top:14px">برگشت به نقشه 🗺️</button>
+  </div>
+</section>
+
+</div>
+<div class="foot">طراح: گروه ۷</div>
+
+<script>
+const $=s=>document.querySelector(s);
+const FA='۰۱۲۳۴۵۶۷۸۹';
+const fa=n=>String(n).replace(/\d/g,d=>FA[d]);
+const R=(a,b)=>Math.floor(Math.random()*(b-a+1))+a;
+const pick=a=>a[R(0,a.length-1)];
+const shuffle=a=>{for(let i=a.length-1;i>0;i--){const j=R(0,i);[a[i],a[j]]=[a[j],a[i]]}return a};
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+/* ---- question banks: [سؤال, گزینه‌ی درست, [سه گزینه‌ی غلط], راهنما] ---- */
+const LEVELS=[
+ {em:'🌊',name:'دریای تبخیر',desc:'خورشید آب را بالا می‌برد',bank:[
+  ['وقتی نور و گرمای خورشید به آب دریا می‌تابد، آب چه می‌شود؟','کم‌کم به بخار آب تبدیل می‌شود و بالا می‌رود',['یخ می‌زند و به ته دریا می‌رود','به شن و ماسه تبدیل می‌شود','رنگش سبز می‌شود و همان‌جا می‌ماند'],'گرمای خورشید آب را به بخار آب تبدیل می‌کند. به این کار «تبخیر» می‌گویند.'],
+  ['به تبدیل شدن آب به بخار آب چه می‌گوییم؟','تبخیر',['بارش','ذوب شدن','انجماد'],'آب مایع وقتی گرم شود به بخار آب (گاز) تبدیل می‌شود. اسم این کار «تبخیر» است.'],
+  ['کدام لباس خیس زودتر خشک می‌شود؟','لباسی که زیر آفتاب و باد پهن شده',['لباسی که داخل کیسه‌ی بسته مانده','لباسی که لوله شده و زیر پتو است','لباسی که در یخچال گذاشته‌ایم'],'آفتاب و باد تبخیر را سریع‌تر می‌کنند و آبِ لباس به هوا می‌رود.'],
+  ['موتور اصلی چرخه‌ی آب که آب را بالا می‌برد چیست؟','گرمای خورشید',['نور ماه','صدای رعد','سنگ‌های کوه'],'بدون گرمای خورشید آب تبخیر نمی‌شود و چرخه‌ی آب شروع نمی‌شود.'],
+  ['بخار آب چه ویژگی‌ای دارد؟','گاز است و معمولاً دیده نمی‌شود',['سنگ سفت و سنگینی است','مایعی است که می‌چسبد','یخ‌های ریز و رنگی است'],'بخار آب همان آب است که به شکل گاز در هوا پخش شده؛ مثل هوا دیده نمی‌شود.'],
+  ['کدام ظرف آب زودتر تبخیر می‌شود؟','ظرف پهن که زیر آفتاب است',['ظرف دردار که داخل کمد است','ظرف باریک که داخل یخچال است','ظرف سرپوشیده که در زیرزمین تاریک است'],'سطح بزرگ‌تر و گرمای بیشتر یعنی تبخیر سریع‌تر.'],
+  ['بخار آبی که از دریا و رودخانه بلند می‌شود به کجا می‌رود؟','بالا، به هوا و آسمان',['به ته دریا','به داخل خاک','به درون غارها'],'بخار آب سبک است و بالا می‌رود.'],
+  ['کدام مورد نمونه‌ی تبخیر است؟','خشک شدن چاله‌ی آب بعد از باران در یک روز آفتابی',['درست شدن یخ در فریزر','افتادن برف از آسمان','جاری شدن رودخانه به سمت دریا'],'آبِ چاله به بخار تبدیل شد و به هوا رفت. این همان تبخیر است.']
+ ]},
+ {em:'☁️',name:'آسمان ابرها',desc:'بخار آب ابر می‌شود',bank:[
+  ['بخار آب وقتی به بالای آسمان می‌رسد و سرد می‌شود، چه می‌شود؟','به قطره‌های بسیار ریز آب تبدیل می‌شود',['به آتش تبدیل می‌شود','به خاک و گل تبدیل می‌شود','به سنگ تبدیل می‌شود'],'هرچه بالاتر برویم هوا سردتر است. بخار آب سرد می‌شود و به قطره‌های ریز آب تبدیل می‌شود.'],
+  ['به تبدیل شدن بخار آب به قطره‌های آب چه می‌گوییم؟','میعان (چگالش)',['تبخیر','بارش','ذوب'],'بخار آب سرد می‌شود و به آب تبدیل می‌شود. اسمش «میعان» است و عکس تبخیر است.'],
+  ['ابرها از چه ساخته شده‌اند؟','قطره‌های ریز آب و ذره‌های کوچک یخ',['پنبه‌ی سفید','دود و خاکستر','گرد و غبار'],'ابر مجموعه‌ی میلیون‌ها قطره‌ی بسیار ریز آب یا یخ است که در هوا معلق‌اند.'],
+  ['بیرون لیوان آب یخ قطره‌های آب نشسته. این قطره‌ها از کجا آمده‌اند؟','از بخار آب هوا که به لیوان سرد خورده و آب شده',['از داخل لیوان نشت کرده‌اند','از گرد و غبار روی لیوان','از نور خورشید'],'این همان میعان است: بخار آب هوا به سطح سرد می‌رسد و به قطره‌ی آب تبدیل می‌شود.'],
+  ['چرا بخار آب در بالای آسمان به ابر تبدیل می‌شود؟','چون هرچه بالاتر برویم هوا سردتر است',['چون آنجا همیشه شب است','چون آنجا خیلی گرم است','چون آنجا باد نمی‌وزد'],'هوای سرد بخار آب را به قطره‌های ریز آب تبدیل می‌کند و ابر درست می‌شود.'],
+  ['در زمستان روی شیشه‌ی سرد پنجره بخار می‌نشیند. این کدام مرحله است؟','میعان',['تبخیر','بارش','ذوب'],'بخار آبِ هوای اتاق به شیشه‌ی سرد می‌خورد و آب می‌شود. این میعان است.'],
+  ['وقتی قطره‌های ابر زیاد و سنگین می‌شوند، چه اتفاقی می‌افتد؟','از ابر پایین می‌آیند',['از ابر بالاتر می‌روند','به خورشید تبدیل می‌شوند','برای همیشه همان‌جا می‌مانند'],'وقتی قطره‌ها سنگین شوند هوا نمی‌تواند نگهشان دارد و می‌بارند.'],
+  ['ابرها کجا ساخته می‌شوند؟','در آسمان، بالای سر ما',['در ته چاه‌ها','در دل کوه‌ها','در کارخانه‌ها'],'بخار آب بالا می‌رود، سرد می‌شود و در آسمان ابر می‌سازد.']
+ ]},
+ {em:'🌧️',name:'کوهستان بارش',desc:'باران، برف و تگرگ',bank:[
+  ['ریختن باران، برف و تگرگ از ابر به زمین را چه می‌نامیم؟','بارش',['تبخیر','میعان','وزش باد'],'هر آبی که از ابر به زمین می‌رسد «بارش» است.'],
+  ['کدام یک از این‌ها نوعی بارش است؟','برف',['باد','زلزله','آفتاب'],'باران، برف و تگرگ سه نوع بارش‌اند.'],
+  ['وقتی هوا خیلی سرد است، ابرها چه می‌بارند؟','برف',['شن','آتش','باران گرم'],'در هوای بسیار سرد، قطره‌های ابر یخ می‌زنند و به شکل برف می‌بارند.'],
+  ['تگرگ چیست؟','دانه‌های سفت یخ که از ابر می‌افتند',['قطره‌های آب گرم','دانه‌های نمک','تکه‌های پنبه'],'تگرگ دانه‌های یخی است که از ابر پایین می‌آیند.'],
+  ['باران چگونه شروع می‌شود؟','قطره‌های ابر بزرگ و سنگین می‌شوند و پایین می‌افتند',['ابر آتش می‌گیرد','ابر به زمین می‌چسبد','ابر به خورشید می‌رسد'],'قطره‌های ابر که سنگین شوند، به شکل باران پایین می‌آیند.'],
+  ['در کدام فصل در بیشتر شهرهای ایران برف می‌بارد؟','زمستان',['تابستان','همه‌ی روزهای سال','هیچ‌وقت'],'در زمستان هوا سردتر است و بارش به شکل برف دیده می‌شود.'],
+  ['بارش برای زندگی چه فایده‌ای دارد؟','به رودخانه‌ها، چشمه‌ها، گیاهان و جانوران آب می‌رساند',['فقط راه‌ها را خیس می‌کند','هیچ فایده‌ای ندارد','فقط لباس‌ها را کثیف می‌کند'],'آب بارش مهم‌ترین منبع آب شیرین ماست.'],
+  ['بعد از ساخته شدن ابر، کدام مرحله می‌آید؟','بارش',['تبخیر','غروب خورشید','خشک شدن دریا'],'ترتیب چرخه‌ی آب: تبخیر، میعان (ابر)، بارش، جمع شدن آب.']
+ ]},
+ {em:'🏞️',name:'رودخانه‌ی جمع‌شدن',desc:'آب کجا جمع می‌شود؟',bank:[
+  ['آب باران بعد از رسیدن به زمین به کجا می‌رود؟','به رودخانه، دریاچه، دریا یا زیر خاک',['برای همیشه ناپدید می‌شود','مستقیم به ماه می‌رود','به خورشید می‌رسد'],'آب بارش در رودخانه‌ها، دریاچه‌ها و دریاها جمع می‌شود یا در خاک فرو می‌رود.'],
+  ['آبی که در خاک فرو می‌رود و زیر زمین جمع می‌شود چه نام دارد؟','آب‌های زیرزمینی',['آب‌های آسمانی','ابر زمینی','برف خشک'],'چاه‌ها و چشمه‌ها از آب‌های زیرزمینی پر می‌شوند.'],
+  ['برف‌های کوه در بهار که آب می‌شوند به کجا می‌روند؟','به رودخانه‌ها و دشت‌ها سرازیر می‌شوند',['برای همیشه روی کوه می‌مانند','یک‌دفعه به ابر تبدیل می‌شوند','از زمین بیرون می‌روند'],'آب شدن برف‌ها در بهار رودخانه‌ها را پرآب می‌کند.'],
+  ['رودخانه‌ها بیشتر آب را به کجا می‌رسانند؟','به دریا یا دریاچه',['به قله‌ی کوه','به آسمان','به ابرها'],'آب رودخانه‌ها از بالا به پایین جاری می‌شود و در دریا یا دریاچه جمع می‌شود.'],
+  ['آب چشمه از کجا می‌آید؟','از آب‌های زیرزمینی که از خاک بیرون می‌آیند',['از ماه','از بادهای بلند','از ابرهای رنگی'],'آبی که در زمین فرو رفته، جایی به شکل چشمه از زمین بیرون می‌آید.'],
+  ['بیشترین آب کره‌ی زمین کجا جمع شده است؟','در دریاها و اقیانوس‌ها',['در رودخانه‌های کوچک','در لیوان‌های ما','در چاله‌های بیابان'],'بیشتر آب زمین در دریاها و اقیانوس‌هاست.'],
+  ['آب دریا چه مزه‌ای دارد؟','شور',['شیرین','ترش','تلخ'],'آب دریاها نمک دارد و شور است؛ آب بیشتر رودخانه‌ها شیرین است.'],
+  ['آب جمع‌شده در دریا دوباره چه می‌شود؟','دوباره تبخیر می‌شود و چرخه ادامه پیدا می‌کند',['برای همیشه می‌ایستد','به سنگ تبدیل می‌شود','به زمین دیگری می‌رود'],'خورشید دوباره آب دریا را گرم می‌کند و چرخه از اول شروع می‌شود.']
+ ]},
+ {em:'🔄',name:'قلعه‌ی چرخه',desc:'ترتیب و صرفه‌جویی آب',bank:[
+  ['ترتیب درست مرحله‌های چرخه‌ی آب کدام است؟','تبخیر ← میعان ← بارش ← جمع شدن آب',['بارش ← تبخیر ← جمع شدن آب ← میعان','میعان ← بارش ← تبخیر ← جمع شدن آب','جمع شدن آب ← بارش ← میعان ← تبخیر'],'اول خورشید آب را تبخیر می‌کند، بخار آب ابر می‌شود (میعان)، ابر می‌بارد و آب جمع می‌شود.'],
+  ['بعد از بارش و جمع شدن آب در رودخانه و دریا، چه می‌شود؟','دوباره تبخیر شروع می‌شود',['چرخه برای همیشه تمام می‌شود','همه‌ی آب‌ها یخ می‌زنند','ابرها از بین می‌روند'],'چرخه‌ی آب دایره‌ای است و بارها تکرار می‌شود.'],
+  ['چرخه‌ی آب کی تمام می‌شود؟','هیچ‌وقت؛ دوباره و دوباره تکرار می‌شود',['وقتی باران می‌بارد','وقتی شب می‌شود','وقتی ابر می‌رود'],'تا وقتی خورشید می‌تابد، چرخه‌ی آب ادامه دارد.'],
+  ['آب‌هایی که می‌نوشیم از کجا آمده‌اند؟','از چرخه‌ی آب که بارها دوباره استفاده می‌شود',['از کارخانه‌ای که آب می‌سازد','از ستاره‌ها','از ماه'],'آب زمین در چرخه‌ی آب بارها استفاده می‌شود و از جایی تازه نمی‌آید.'],
+  ['موقع مسواک زدن چه کار کنیم تا آب هدر نرود؟','شیر آب را ببندیم',['شیر آب را کامل باز بگذاریم','آب را روی زمین بریزیم','چند بار آب را عوض کنیم'],'آب شیرین محدود است. با بستن شیر آب موقع مسواک زدن، آب زیادی صرفه‌جویی می‌شود.'],
+  ['در چرخه‌ی آب، میعان بین کدام دو مرحله است؟','بین تبخیر و بارش',['بین بارش و جمع شدن آب','بعد از جمع شدن آب','قبل از تبخیر'],'اول تبخیر، بعد میعان (ساخته شدن ابر)، بعد بارش.'],
+  ['کدام جمله درست است؟','خورشید آب را تبخیر می‌کند و بعد ابر و باران درست می‌شود',['باران از زمین به آسمان می‌رود','برف در تابستان می‌بارد','بخار آب هیچ‌وقت سرد نمی‌شود'],'خورشید، تبخیر، ابر، باران: چرخه‌ی آب را همین‌طور به یاد بسپار.'],
+  ['اگر قطره‌ای از ابر سرد و سنگین فرو بیفتد، در کدام مرحله است؟','بارش',['تبخیر','میعان','جمع شدن آب'],'ریختن آب از ابر به زمین «بارش» است.']
+ ]}
+];
+
+/* ---- state ---- */
+let user='',stars=LEVELS.map(()=>0),best=LEVELS.map(()=>0),cur=0,qi=0,ok=0,cur_q=null,locked=false,deck=[];
+const show=id=>{document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('on',s.id===id));window.scrollTo(0,0)};
+
+/* ---- music (WebAudio, no files) ---- */
+let ac,master,musicOn=true,step=0,timer,dly,nb;
+const SC=[146.83,164.81*0.97,174.61,196,220,233.08,261.63,293.66,320,349.23,392,440,466.16,523.25,587.33];
+const MEL=[7,8,9,8,7,6,7,7,4,5,6,5,4,3,4,4, 7,9,10,9,8,7,8,7,11,10,9,8,7,6,7,7, 10,11,12,11,10,9,10,10,9,8,7,6,5,4,3,3, 4,5,6,7,8,7,6,5,4,5,4,3,2,3,4,4];
+function pluck(f,t,d,v){[1,1.004].forEach((k,i)=>{const o=ac.createOscillator(),g=ac.createGain();o.type=i?'sine':'triangle';o.frequency.value=f*k;
+ g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(v,t+.004);g.gain.exponentialRampToValueAtTime(.0008,t+d);
+ o.connect(g);g.connect(master);g.connect(dly);o.start(t);o.stop(t+d+.05)});
+ const o2=ac.createOscillator(),g2=ac.createGain();o2.type='sine';o2.frequency.value=f*3.01;g2.gain.setValueAtTime(v*.5,t);g2.gain.exponentialRampToValueAtTime(.0005,t+.18);o2.connect(g2);g2.connect(master);o2.start(t);o2.stop(t+.25)}
+function tone(f,t,d,type,v){const o=ac.createOscillator(),g=ac.createGain();o.type=type;o.frequency.value=f;g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(v,t+.02);g.gain.exponentialRampToValueAtTime(.001,t+d);o.connect(g);g.connect(master);o.start(t);o.stop(t+d+.05)}
+function noise(t,type,fq,v,d){const src=ac.createBufferSource();src.buffer=nb;const f=ac.createBiquadFilter();f.type=type;f.frequency.value=fq;const g=ac.createGain();g.gain.setValueAtTime(v,t);g.gain.exponentialRampToValueAtTime(.001,t+d);src.connect(f);f.connect(g);g.connect(master);src.start(t,Math.random()*.6,d+.02)}
+function kick(t){const o=ac.createOscillator(),g=ac.createGain();o.frequency.setValueAtTime(150,t);o.frequency.exponentialRampToValueAtTime(48,t+.12);g.gain.setValueAtTime(.55,t);g.gain.exponentialRampToValueAtTime(.001,t+.2);o.connect(g);g.connect(master);o.start(t);o.stop(t+.25)}
+function applause(){if(!ac)return;const t=ac.currentTime;for(let i=0;i<34;i++)noise(t+Math.random()*1.5+.02,'bandpass',1400+Math.random()*2800,.22,.05+Math.random()*.04)}
+function startMusic(){
+ try{
+  if(!ac){ac=new (window.AudioContext||window.webkitAudioContext)();master=ac.createGain();master.gain.value=musicOn?.6:0;master.connect(ac.destination);
+   nb=ac.createBuffer(1,ac.sampleRate,ac.sampleRate);const d=nb.getChannelData(0);for(let i=0;i<d.length;i++)d[i]=Math.random()*2-1;
+   dly=ac.createDelay();dly.delayTime.value=.19;const fb=ac.createGain();fb.gain.value=.34;const wet=ac.createGain();wet.gain.value=.3;dly.connect(fb);fb.connect(dly);dly.connect(wet);wet.connect(master)}
+  if(ac.state==='suspended')ac.resume();if(timer)return;
+  timer=setInterval(()=>{const t=ac.currentTime+.05,n=MEL[step%MEL.length],f=SC[n],m=step%16;
+   pluck(f,t,.75,.3);pluck(f,t+.095,.5,.14);
+   if(step%4===0){kick(t);pluck(f/2,t,1,.16)}
+   if(step%4===2)noise(t,'highpass',3500,.2,.06);
+   if(step%2===1)noise(t,'highpass',6000,.1,.03);
+   if(m===14||m===15)noise(t+.05,'bandpass',2500,.16,.05);
+   if(step%32===0)pluck(SC[7],t,2,.14);step++},190)
+ }catch(e){}}
+function setMute(){musicOn=!musicOn;if(master)master.gain.value=musicOn?.6:0;$('#mute').textContent=$('#mute2').textContent=musicOn?'🔊':'🔇'}
+function sfx(good){if(!ac)return;const t=ac.currentTime;(good?[659,784,1047]:[300,220]).forEach((f,i)=>tone(f,t+i*.12,.25,good?'square':'sawtooth',.12))}
+$('#mute').onclick=$('#mute2').onclick=setMute;
+
+/* ---- flow ---- */
+const COL=['#ff3d71','#ff9f1c','#ffd23f','#2dc653','#00b4d8','#7b5cff','#ff6bd6'];
+function confetti(n=40){for(let i=0;i<n;i++){const e=document.createElement('div');
+  if(i%2){e.className='confetti';e.textContent=pick(['💧','⭐','🎈','🌈','✨','🌟','🎊','🏅'])}
+  else{e.className='bit';const z=R(8,16);e.style.width=z+'px';e.style.height=z*(R(5,9)/10)+'px';e.style.background=pick(COL)}
+  e.style.right=R(0,98)+'%';e.style.animationDelay=Math.random()*.7+'s';e.style.animationDuration=(1.8+Math.random()*1.6)+'s';
+  document.body.appendChild(e);setTimeout(()=>e.remove(),4200)}}
+function popup(t){const e=document.createElement('div');e.className='pop';e.textContent=t;document.body.appendChild(e);setTimeout(()=>e.remove(),1200)}
+function drawMap(){
+ $('#hello').textContent='سلام کاپیتان '+user+' 👋';
+ $('#total').textContent='⭐ '+fa(stars.reduce((a,b)=>a+b,0))+' از '+fa(15);
+ $('#map').innerHTML='';
+ LEVELS.forEach((L,i)=>{const b=document.createElement('button');b.className='isle';const open=i===0||stars[i-1]>0;b.disabled=!open;
+  b.innerHTML=`<span class="em">${open?L.em:'🔒'}</span><span class="txt"><b>${fa(i+1)}. ${L.name}</b><small>${open?L.desc:'جزیره‌ی قبلی را تمام کن'}</small></span><span class="stars">${'⭐'.repeat(stars[i])}${'☆'.repeat(3-stars[i])}</span>`;
+  b.onclick=()=>startLevel(i);$('#map').appendChild(b)});
+ show('s-map')}
+function startLevel(i){cur=i;qi=0;ok=0;deck=shuffle(LEVELS[i].bank.slice()).slice(0,5);$('#qtitle').textContent=LEVELS[i].em+' '+LEVELS[i].name;nextQ()}
+function nextQ(){
+ if(qi>=5)return finish();
+ const it=deck[qi],opts=shuffle([it[1],...it[2]]);
+ cur_q={q:it[0],opts,ans:opts.indexOf(it[1]),hint:it[3]};locked=false;
+ $('#bar').style.width=(qi/5*100)+'%';
+ $('#qtext').innerHTML=`<small>سؤال ${fa(qi+1)} از ${fa(5)}</small>`+esc(cur_q.q);
+ $('#fb').textContent='';$('#next').style.display='none';
+ $('#opts').innerHTML='';
+ cur_q.opts.forEach((o,i)=>{const b=document.createElement('button');b.className='opt';b.textContent=o;b.onclick=()=>answer(i,b);$('#opts').appendChild(b)});
+ show('s-quiz')}
+function answer(i,btn){
+ if(locked)return;locked=true;const bs=document.querySelectorAll('.opt');
+ if(i===cur_q.ans){ok++;btn.classList.add('ok');sfx(true);applause();confetti(34);popup(pick(['آفرین! 🎉','عالیه! ⭐','دمت گرم! 💪','فوق‌العاده! 🌟','قهرمان! 🏆']));$('#fb').innerHTML='🎉 <b>آفرین!</b> '+pick(['درست گفتی!','دمت گرم کاپیتان!','عالی بود!','گنج پیدا کردی!'])+'<br>'+esc(cur_q.hint)}
+ else{btn.classList.add('no');bs[cur_q.ans].classList.add('ok');sfx(false);$('#fb').innerHTML='🤔 <b>اشکال نداره!</b> یاد بگیر:<br>'+esc(cur_q.hint)}
+ qi++;$('#bar').style.width=(qi/5*100)+'%';
+ const n=$('#next');n.style.display='block';n.textContent=qi>=5?'دیدن نتیجه 🏆':'بعدی ⬅️';n.focus()}
+function finish(){
+ const s=ok>=5?3:ok>=4?2:ok>=3?1:0;stars[cur]=Math.max(stars[cur],s);best[cur]=Math.max(best[cur],ok);
+ $('#eStars').textContent='⭐'.repeat(s)+'☆'.repeat(3-s);
+ const win=s>0;
+ $('#eEmoji').textContent=win?'🏆':'🌊';
+ $('#eTitle').textContent=win?'آفرین کاپیتان '+user+'!':'نزدیک بود، '+user+'!';
+ $('#eText').textContent='تو '+fa(ok)+' جواب درست از '+fa(5)+' سؤال دادی. '+(win?(cur<4?'جزیره‌ی بعدی باز شد! 🔓':'همه‌ی جزیره‌ها را فتح کردی؛ تو یک قهرمان چرخه‌ی آبی! 👑'):'برای باز شدن جزیره‌ی بعدی حداقل '+fa(3)+' جواب درست لازم است. دوباره امتحان کن!');
+ if(win)confetti(90);show('s-end')}
+function reportText(){
+ const tot=stars.reduce((a,b)=>a+b,0);
+ return 'کارنامه‌ی ماجراجویی در جزیره‌های چرخه‌ی آب\nنام: '+user+'\n'+LEVELS.map((L,i)=>L.name+': '+fa(best[i])+' از '+fa(5)+' - '+(stars[i]?fa(stars[i])+' ستاره':'بدون ستاره')).join('\n')+'\nمجموع ستاره‌ها: '+fa(tot)+' از '+fa(15)+'\nطراح: گروه ۷'}
+function drawCard(){
+ const tot=stars.reduce((a,b)=>a+b,0),done=stars.filter(x=>x>0).length;
+ const rows=LEVELS.map((L,i)=>`<tr><td>${L.em} ${L.name}</td><td>${best[i]||stars[i]?fa(best[i])+' از '+fa(5):'—'}</td><td>${stars[i]?'⭐'.repeat(stars[i]):'—'}</td></tr>`).join('');
+ const g=tot>=13?['ممتاز 🏅','آفرین! تو یک قهرمان چرخه‌ی آبی!']:tot>=10?['خیلی خوب 🌟','عالی پیش رفتی! کمی دیگر تلاش کنی ممتاز می‌شوی.']:tot>=6?['خوب 👍','کارت خوب بود! با تمرین بیشتر ستاره‌هایت را زیاد کن.']:tot>=1?['نیاز به تلاش بیشتر 💪','شروع قشنگی بود! جزیره‌ها را دوباره امتحان کن.']:['هنوز شروع نکرده‌ای 🚀','برو به نقشه و اولین جزیره را فتح کن!'];
+ let dt='';try{dt=new Date().toLocaleDateString('fa-IR')}catch(e){}
+ $('#cardBody').innerHTML=`<div class="cinfo"><span>👤 نام: ${esc(user)}</span><span>📅 ${esc(dt)}</span></div>
+ <div class="tbl"><table class="ct"><tr><th>جزیره</th><th>جواب درست</th><th>ستاره</th></tr>${rows}</table></div>
+ <div class="cinfo"><span>🏝️ جزیره‌های تمام‌شده: ${fa(done)} از ${fa(5)}</span><span>⭐ ستاره‌ها: ${fa(tot)} از ${fa(15)}</span></div>
+ <div class="grade">${g[0]}<br><span class="stamp">${done===5?'قهرمان چرخه‌ی آب':'کاپیتان کوچولو'}</span></div>
+ <p class="note" style="margin-top:10px">${g[1]}</p>
+ <p class="note" style="font-size:14px;opacity:.75">طراح: گروه ۷</p>`;
+ $('#copy').textContent='📋 کپی کارنامه';
+ show('s-card');if(tot>=10)confetti(60)}
+$('#next').onclick=nextQ;
+$('#toCard').onclick=$('#mapCard').onclick=drawCard;
+$('#cardBack').onclick=()=>drawMap();
+$('#copy').onclick=async()=>{try{await navigator.clipboard.writeText(reportText());$('#copy').textContent='✅ کپی شد'}catch(e){$('#copy').textContent='کپی نشد؛ از صفحه عکس بگیرید 📸'}};
+$('#back').onclick=()=>drawMap();
+$('#toMap').onclick=()=>drawMap();
+$('#again').onclick=()=>startLevel(cur);
+$('#go').onclick=()=>{const v=$('#name').value.trim();if(!v){$('#name').focus();$('#name').style.borderColor='#ff6b6b';$('#name').placeholder='اول اسمت را بنویس 😊';return}user=v;startMusic();drawMap()};
+$('#name').addEventListener('keydown',e=>{if(e.key==='Enter')$('#go').click()});
+</script>
+
+</body></html>
